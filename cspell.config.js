@@ -19,6 +19,7 @@ module.exports = {
     'sokol',
     'remixd',
     // projects
+    'keccak',
   ],
 
   ignoreWords: [],
