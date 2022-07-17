@@ -20,6 +20,7 @@ module.exports = {
     'remixd',
     // projects
     'keccak',
+    'ierc',
   ],
 
   ignoreWords: [],
