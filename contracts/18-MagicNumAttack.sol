@@ -11,7 +11,7 @@ contract MagicNumAttack {
         victimMagicNum = victimMagicNum_;
     }
 
-    /// @dev solver's bytecode is 0x600a600c600039600a6000f3602a60505260206050f3
+    /// @dev Solver's bytecode is 0x600a600c600039600a6000f3602a60505260206050f3
     function attack(bytes memory bytecode) external {
         address solver;
         // solhint-disable-next-line no-inline-assembly
@@ -21,6 +21,21 @@ contract MagicNumAttack {
                 revert(0, 0)
             }
         }
+
+        // solhint-disable-next-line avoid-low-level-calls
+        (bool isSuccess, bytes memory data) = solver.call(
+            abi.encodeWithSignature("whatIsTheMeaningOfLife()")
+        );
+
+        require(isSuccess, "MagicNum: Call error");
+
+        uint256 theMeaningOfLife;
+        // solhint-disable-next-line no-inline-assembly
+        assembly {
+            theMeaningOfLife := mload(add(add(data, 0x20), 0))
+        }
+
+        require(42 == theMeaningOfLife, "MagicNum: Wrong res");
 
         victimMagicNum.setSolver(solver);
 
