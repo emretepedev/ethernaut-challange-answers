@@ -13,7 +13,7 @@ contract PrivacyAttack {
 
     /**
      * @dev To get key from storage, you can run this script in client side:
-     * (await web3.eth.getStorageAt(contract.address, 5)).slice(0, 2 + 32)
+     * > (await web3.eth.getStorageAt(contract.address, 5)).slice(0, 2 + 32)
      */
     function attack(bytes16 key) external {
         victimPrivacy.unlock(key);

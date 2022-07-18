@@ -13,7 +13,7 @@ contract NaughtCoinAttack {
 
     /**
      * @dev To get password from storage, you can run this script in client side:
-     * await contract.approve(<NaughtCoinAttack_CONTRACT_ADDRESS>, await contract.balanceOf(player))
+     * > await contract.approve(<NaughtCoinAttack_CONTRACT_ADDRESS>, await contract.balanceOf(player))
      */
     function attack() external {
         require(

