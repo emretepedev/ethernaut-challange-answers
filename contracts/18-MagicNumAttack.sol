@@ -16,11 +16,7 @@ contract MagicNumAttack {
         address solver;
         // solhint-disable-next-line no-inline-assembly
         assembly {
-            solver := create(
-                0,
-                add(bytecode, 0x20),
-                mload(bytecode)
-            )
+            solver := create(0, add(bytecode, 0x20), mload(bytecode))
             if iszero(extcodesize(solver)) {
                 revert(0, 0)
             }
