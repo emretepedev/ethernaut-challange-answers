@@ -21,6 +21,8 @@ module.exports = {
     // projects
     'keccak',
     'ierc',
+    'mload',
+    'iszero',
   ],
 
   ignoreWords: [],
