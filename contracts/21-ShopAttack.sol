@@ -20,6 +20,9 @@ contract ShopAttack {
 
         victimShop.buy();
 
-        require(victimShop.isSold() && price_ > victimShop.price(), "Shop: Attack failed");
+        require(
+            victimShop.isSold() && price_ > victimShop.price(),
+            "Shop: Attack failed"
+        );
     }
 }
