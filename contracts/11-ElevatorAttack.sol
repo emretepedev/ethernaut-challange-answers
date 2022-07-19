@@ -14,8 +14,8 @@ contract ElevatorAttack {
 
     function isLastFloor(
         uint256 /* floor */
-    ) external returns (bool isLastFloor_) {
-        isLastFloor_ = _isLastFloor = !_isLastFloor;
+    ) external returns (bool) {
+        return _isLastFloor = !_isLastFloor;
     }
 
     function attack() external {
