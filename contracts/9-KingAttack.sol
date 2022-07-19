@@ -29,8 +29,7 @@ contract KingAttack {
         );
     }
 
-    // solhint-disable-next-line payable-fallback
-    fallback() external {
+    receive() external payable {
         revert("King: Level passed");
     }
 }
