@@ -5,6 +5,14 @@ pragma solidity ^0.8.0;
 import "./support/IOwnable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
+interface ISwappableToken is IERC20 {
+    function approve(
+        address owner,
+        address spender,
+        uint256 amount
+    ) external returns (bool);
+}
+
 interface IDex is IOwnable {
     function token1() external view returns (address);
 
@@ -33,12 +41,4 @@ interface IDex is IOwnable {
         external
         view
         returns (uint256);
-}
-
-interface ISwappableToken is IERC20 {
-    function approve(
-        address owner,
-        address spender,
-        uint256 amount
-    ) external returns (bool);
 }
