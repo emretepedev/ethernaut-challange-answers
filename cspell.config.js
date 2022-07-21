@@ -23,6 +23,7 @@ module.exports = {
     'ierc',
     'mload',
     'iszero',
+    'upgrader',
   ],
 
   ignoreWords: [],
