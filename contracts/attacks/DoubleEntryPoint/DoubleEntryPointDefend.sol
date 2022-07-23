@@ -5,10 +5,10 @@ pragma solidity ^0.8.0;
 import "./interfaces/IDoubleEntryPoint.sol";
 
 contract DoubleEntryPointDefend is IDetectionBot {
-    IDoubleEntryPoint private immutable victimDoubleEntryPoint;
+    IDoubleEntryPoint private immutable target;
 
-    constructor(IDoubleEntryPoint victimDoubleEntryPoint_) {
-        victimDoubleEntryPoint = victimDoubleEntryPoint_;
+    constructor(IDoubleEntryPoint target_) {
+        target = target_;
     }
 
     /**
@@ -32,11 +32,11 @@ contract DoubleEntryPointDefend is IDetectionBot {
         });
     */
     function handleTransaction(address user, bytes calldata msgData) external override {
-        IForta forta = victimDoubleEntryPoint.forta();
+        IForta forta = target.forta();
 
         require(msg.sender == address(forta), "DoubleEntryPoint: Unauthorized");
 
-        if (bytes4(abi.encodeWithSelector(victimDoubleEntryPoint.delegateTransfer.selector)) == bytes4(msgData)) {
+        if (bytes4(abi.encodeWithSelector(target.delegateTransfer.selector)) == bytes4(msgData)) {
             forta.raiseAlert(user);
         }
     }

