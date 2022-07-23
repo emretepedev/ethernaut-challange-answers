@@ -24,6 +24,7 @@ module.exports = {
     'mload',
     'iszero',
     'upgrader',
+    'forta',
   ],
 
   ignoreWords: [],
