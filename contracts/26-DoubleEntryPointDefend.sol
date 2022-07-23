@@ -35,6 +35,10 @@ contract DoubleEntryPointDefend is IDetectionBot {
         external
         override
     {
+        IForta forta = victimDoubleEntryPoint.forta();
+
+        require(msg.sender == address(forta), "DoubleEntryPoint: Unauthorized");
+
         if (
             bytes4(
                 abi.encodeWithSelector(
@@ -42,7 +46,7 @@ contract DoubleEntryPointDefend is IDetectionBot {
                 )
             ) == bytes4(msgData)
         ) {
-            victimDoubleEntryPoint.forta().raiseAlert(user);
+            forta.raiseAlert(user);
         }
     }
 }
