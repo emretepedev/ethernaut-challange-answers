@@ -31,21 +31,12 @@ contract DoubleEntryPointDefend is IDetectionBot {
             )
         });
     */
-    function handleTransaction(address user, bytes calldata msgData)
-        external
-        override
-    {
+    function handleTransaction(address user, bytes calldata msgData) external override {
         IForta forta = victimDoubleEntryPoint.forta();
 
         require(msg.sender == address(forta), "DoubleEntryPoint: Unauthorized");
 
-        if (
-            bytes4(
-                abi.encodeWithSelector(
-                    victimDoubleEntryPoint.delegateTransfer.selector
-                )
-            ) == bytes4(msgData)
-        ) {
+        if (bytes4(abi.encodeWithSelector(victimDoubleEntryPoint.delegateTransfer.selector)) == bytes4(msgData)) {
             forta.raiseAlert(user);
         }
     }

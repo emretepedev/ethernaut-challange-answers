@@ -15,10 +15,7 @@ contract ElevatorAttack {
     function attack() external {
         victimElevator.goTo(0);
 
-        require(
-            victimElevator.top() && 0 == victimElevator.floor(),
-            "Elevator: Attack failed"
-        );
+        require(victimElevator.top() && 0 == victimElevator.floor(), "Elevator: Attack failed");
     }
 
     function isLastFloor(

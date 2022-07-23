@@ -16,8 +16,5 @@ interface IFallout {
 
     function collectAllocations() external;
 
-    function allocatorBalance(address allocator)
-        external
-        view
-        returns (uint256);
+    function allocatorBalance(address allocator) external view returns (uint256);
 }

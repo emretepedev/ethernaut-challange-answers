@@ -28,8 +28,5 @@ interface IDex is IOwnable {
 
     function approve(address spender, uint256 amount) external;
 
-    function balanceOf(address token, address account)
-        external
-        view
-        returns (uint256);
+    function balanceOf(address token, address account) external view returns (uint256);
 }

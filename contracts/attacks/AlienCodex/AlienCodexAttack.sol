@@ -23,9 +23,6 @@ contract AlienCodexAttack {
             bytes32(bytes20(msg.sender)) >> 96
         );
 
-        require(
-            msg.sender == victimAlienCodex.owner(),
-            "AlienCodex: Attack failed"
-        );
+        require(msg.sender == victimAlienCodex.owner(), "AlienCodex: Attack failed");
     }
 }

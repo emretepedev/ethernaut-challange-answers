@@ -12,21 +12,14 @@ contract KingAttack {
     }
 
     function attack() external payable {
-        require(
-            msg.value >= victimKing.prize(),
-            "King: Value must be gt|eq prize"
-        );
+        require(msg.value >= victimKing.prize(), "King: Value must be gt|eq prize");
 
         // solhint-disable-next-line avoid-low-level-calls
         (bool isSuccess, ) = address(victimKing).call{ value: msg.value }("");
 
         require(isSuccess, "King: Call error");
 
-        require(
-            address(this) == victimKing._king() &&
-                msg.value == victimKing.prize(),
-            "King: Attack failed"
-        );
+        require(address(this) == victimKing._king() && msg.value == victimKing.prize(), "King: Attack failed");
     }
 
     receive() external payable {

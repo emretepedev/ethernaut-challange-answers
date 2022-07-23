@@ -12,8 +12,5 @@ interface INaughtCoin is IERC20 {
 
     function player() external view returns (address);
 
-    function transfer(address _to, uint256 _value)
-        external
-        override
-        returns (bool);
+    function transfer(address _to, uint256 _value) external override returns (bool);
 }
