@@ -16,26 +16,18 @@ contract MagicNumAttack {
         address solver;
         // solhint-disable-next-line no-inline-assembly
         assembly {
-            solver := create(0, add(bytecode, 0x20), mload(bytecode))
+            solver := create(0, add(bytecode, 32), mload(bytecode))
             if iszero(extcodesize(solver)) {
                 revert(0, 0)
             }
         }
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool isSuccess, bytes memory data) = solver.call(
-            abi.encodeWithSignature("whatIsTheMeaningOfLife()")
-        );
+        (bool isSuccess, bytes memory data) = solver.call(abi.encodeWithSignature("whatIsTheMeaningOfLife()"));
 
         require(isSuccess, "MagicNum: Call error");
 
-        uint256 theMeaningOfLife;
-        // solhint-disable-next-line no-inline-assembly
-        assembly {
-            theMeaningOfLife := mload(add(add(data, 0x20), 0))
-        }
-
-        require(42 == theMeaningOfLife, "MagicNum: Wrong res");
+        require(42 == uint256(bytes32(data)), "MagicNum: Wrong res");
 
         victimMagicNum.setSolver(solver);
 
