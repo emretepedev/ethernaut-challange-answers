@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "./support/IOwnable.sol";
+import "./support/interfaces/IOwnable.sol";
 
 interface IAlienCodex is IOwnable {
     function contact() external view returns (bool);

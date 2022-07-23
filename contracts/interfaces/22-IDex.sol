@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "./support/IOwnable.sol";
+import "./support/interfaces/IOwnable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 interface ISwappableToken is IERC20 {
