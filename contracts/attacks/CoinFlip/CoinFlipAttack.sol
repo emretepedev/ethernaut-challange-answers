@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract CoinFlipAttack {
     using SafeMath for uint256;
 
-    ICoinFlip public immutable victimCoinFlip;
+    ICoinFlip private immutable victimCoinFlip;
 
     constructor(ICoinFlip victimCoinFlip_) {
         victimCoinFlip = victimCoinFlip_;

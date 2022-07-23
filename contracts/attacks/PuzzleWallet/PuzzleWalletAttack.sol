@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IPuzzleWallet.sol";
 
 contract PuzzleWalletAttack {
-    IPuzzleWallet public immutable victimPuzzleWallet;
+    IPuzzleWallet private immutable victimPuzzleWallet;
 
     constructor(IPuzzleWallet victimPuzzleWallet_) {
         victimPuzzleWallet = victimPuzzleWallet_;

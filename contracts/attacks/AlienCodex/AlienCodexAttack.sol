@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IAlienCodex.sol";
 
 contract AlienCodexAttack {
-    IAlienCodex public immutable victimAlienCodex;
+    IAlienCodex private immutable victimAlienCodex;
 
     constructor(IAlienCodex victimAlienCodex_) {
         victimAlienCodex = victimAlienCodex_;

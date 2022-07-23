@@ -5,17 +5,11 @@ pragma solidity ^0.8.0;
 import "./interfaces/IMotorbike.sol";
 
 contract MotorbikeAttack {
-    IMotorbike public immutable victimMotorbike;
-    bool internal _levelPassed;
+    IMotorbike private immutable victimMotorbike;
+    bool private _levelPassed;
 
     constructor(IMotorbike victimMotorbike_) {
         victimMotorbike = victimMotorbike_;
-    }
-
-    function levelPassed() external {
-        require(_levelPassed, "Motorbike: Level not passed yet");
-        // solhint-disable-next-line avoid-tx-origin
-        selfdestruct(payable(tx.origin));
     }
 
     /**
@@ -52,5 +46,11 @@ contract MotorbikeAttack {
         );
 
         require(_levelPassed = _isSuccess_, "Motorbike: Call error");
+    }
+
+    function levelPassed() external {
+        require(_levelPassed, "Motorbike: Level not passed yet");
+        // solhint-disable-next-line avoid-tx-origin
+        selfdestruct(payable(tx.origin));
     }
 }

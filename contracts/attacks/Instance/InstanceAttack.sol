@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IInstance.sol";
 
 contract InstanceAttack {
-    IInstance public immutable victimInstance;
+    IInstance private immutable victimInstance;
 
     constructor(IInstance victimInstance_) {
         victimInstance = victimInstance_;

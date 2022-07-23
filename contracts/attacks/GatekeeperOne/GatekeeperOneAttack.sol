@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IGatekeeperOne.sol";
 
 contract GatekeeperOneAttack {
-    IGatekeeperOne public immutable victimGatekeeperOne;
+    IGatekeeperOne private immutable victimGatekeeperOne;
 
     constructor(IGatekeeperOne victimGatekeeperOne_) {
         victimGatekeeperOne = victimGatekeeperOne_;

@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IMagicNum.sol";
 
 contract MagicNumAttack {
-    IMagicNum public immutable victimMagicNum;
+    IMagicNum private immutable victimMagicNum;
 
     constructor(IMagicNum victimMagicNum_) {
         victimMagicNum = victimMagicNum_;

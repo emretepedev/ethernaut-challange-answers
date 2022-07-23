@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/ITelephone.sol";
 
 contract TelephoneAttack {
-    ITelephone public immutable victimTelephone;
+    ITelephone private immutable victimTelephone;
 
     constructor(ITelephone victimTelephone_) {
         victimTelephone = victimTelephone_;

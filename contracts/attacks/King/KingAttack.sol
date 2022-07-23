@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IKing.sol";
 
 contract KingAttack {
-    IKing public immutable victimKing;
+    IKing private immutable victimKing;
 
     constructor(IKing victimKing_) {
         victimKing = victimKing_;

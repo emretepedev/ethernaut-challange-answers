@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IRecovery.sol";
 
 contract RecoveryAttack {
-    IRecovery public immutable victimRecovery;
+    IRecovery private immutable victimRecovery;
 
     constructor(IRecovery victimRecovery_) {
         victimRecovery = victimRecovery_;

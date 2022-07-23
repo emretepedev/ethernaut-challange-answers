@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/INaughtCoin.sol";
 
 contract NaughtCoinAttack {
-    INaughtCoin public immutable victimNaughtCoin;
+    INaughtCoin private immutable victimNaughtCoin;
 
     constructor(INaughtCoin victimNaughtCoin_) {
         victimNaughtCoin = victimNaughtCoin_;

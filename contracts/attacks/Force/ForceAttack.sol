@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IForce.sol";
 
 contract ForceAttack {
-    IForce public immutable victimForce;
+    IForce private immutable victimForce;
 
     constructor(IForce victimForce_) {
         victimForce = victimForce_;

@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IPrivacy.sol";
 
 contract PrivacyAttack {
-    IPrivacy public immutable victimPrivacy;
+    IPrivacy private immutable victimPrivacy;
 
     constructor(IPrivacy victimPrivacy_) {
         victimPrivacy = victimPrivacy_;

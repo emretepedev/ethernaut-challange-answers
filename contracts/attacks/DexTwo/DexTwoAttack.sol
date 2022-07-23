@@ -7,7 +7,7 @@ import "./interfaces/ISwappableTokenTwo.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract DexTwoAttack is ERC20 {
-    IDexTwo public immutable victimDexTwo;
+    IDexTwo private immutable victimDexTwo;
 
     constructor(IDexTwo victimDexTwo_) ERC20("DexTwo", "DT") {
         _mint(

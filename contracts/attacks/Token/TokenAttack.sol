@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IToken.sol";
 
 contract TokenAttack {
-    IToken public immutable victimToken;
+    IToken private immutable victimToken;
 
     constructor(IToken victimToken_) {
         victimToken = victimToken_;

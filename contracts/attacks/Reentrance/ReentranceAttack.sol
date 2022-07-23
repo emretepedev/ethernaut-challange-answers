@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IReentrance.sol";
 
 contract ReentranceAttack {
-    IReentrance public immutable victimReentrance;
+    IReentrance private immutable victimReentrance;
 
     constructor(IReentrance victimReentrance_) {
         victimReentrance = victimReentrance_;

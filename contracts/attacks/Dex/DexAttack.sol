@@ -6,7 +6,7 @@ import "./interfaces/IDex.sol";
 import "./interfaces/ISwappableToken.sol";
 
 contract DexAttack {
-    IDex public immutable victimDex;
+    IDex private immutable victimDex;
     uint256 private constant FROM = 0;
     uint256 private constant TO = 1;
     uint256 private constant MAX_UINT256 = type(uint256).max;

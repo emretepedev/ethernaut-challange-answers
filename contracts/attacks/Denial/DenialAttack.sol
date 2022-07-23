@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IDenial.sol";
 
 contract DenialAttack {
-    IDenial public immutable victimDenial;
+    IDenial private immutable victimDenial;
 
     constructor(IDenial victimDenial_) {
         victimDenial = victimDenial_;

@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IDoubleEntryPoint.sol";
 
 contract DoubleEntryPointDefend is IDetectionBot {
-    IDoubleEntryPoint public immutable victimDoubleEntryPoint;
+    IDoubleEntryPoint private immutable victimDoubleEntryPoint;
 
     constructor(IDoubleEntryPoint victimDoubleEntryPoint_) {
         victimDoubleEntryPoint = victimDoubleEntryPoint_;

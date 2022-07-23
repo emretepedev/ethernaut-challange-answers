@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./interfaces/IVault.sol";
 
 contract VaultAttack {
-    IVault public immutable victimVault;
+    IVault private immutable victimVault;
 
     constructor(IVault victimVault_) {
         victimVault = victimVault_;
