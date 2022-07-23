@@ -22,7 +22,7 @@ contract MotorbikeAttack {
 
         require(isSuccess_, "Motorbike: Call error");
 
-        require(address(this) == address(bytes20(bytes32(data) << 96)), "Motorbike: Wrong address");
+        require(address(this) == address(bytes20(bytes32(data) << (8 * 12))), "Motorbike: Wrong address");
 
         // solhint-disable-next-line avoid-low-level-calls
         (bool _isSuccess_, ) = implementation.call(
