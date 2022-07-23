@@ -7,7 +7,7 @@ import "./interfaces/IRecovery.sol";
 contract RecoveryAttack {
     function attack(IRecovery target) external {
         address lostContractAddress = address(
-            uint160(uint256(keccak256(abi.encodePacked(bytes1(0xd6), bytes1(0x94), target, bytes1(0x01)))))
+            uint160(uint256(keccak256(abi.encodePacked(uint8(214), uint8(148), target, uint8(1)))))
         );
 
         require(0 < lostContractAddress.balance, "Recovery: Wrong balance");
