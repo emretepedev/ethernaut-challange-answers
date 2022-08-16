@@ -33,8 +33,8 @@ contract DenialAttack {
     //////////////////////////////////////////////////////////////*/
 
     /**
-     * @notice consume all gas and bubble-up the effects
-     * @dev neither revert nor assert not consume all gas since Solidity 0.8.0
+     * @notice Consume all gas and bubble-up the effects
+     * @dev Neither revert nor assert not consume all gas since Solidity 0.8.0
      */
     receive() external payable {
         // solhint-disable no-inline-assembly
