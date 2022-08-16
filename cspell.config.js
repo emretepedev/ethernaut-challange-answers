@@ -25,6 +25,9 @@ module.exports = {
     'iszero',
     'upgrader',
     'forta',
+    'emretepedev',
+    'emre',
+    'tepe',
   ],
 
   ignoreWords: [],
