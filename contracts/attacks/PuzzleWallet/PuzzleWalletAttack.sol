@@ -4,7 +4,22 @@ pragma solidity ^0.8.0;
 
 import "./interfaces/IPuzzleWallet.sol";
 
+/**
+ * @title Puzzle Wallet Attack (Ethernaut Challenge Level 24 - Puzzle Wallet)
+ * @author Emre Tepe (@emretepedev)
+ * @notice Attack contract for level 24
+ * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xe13a4a46C346154C41360AAe7f070943F67743c9
+ * @custom:security-contact emretepedev@gmail.com
+ */
 contract PuzzleWalletAttack {
+    /*//////////////////////////////////////////////////////////////
+                                Attack
+    //////////////////////////////////////////////////////////////*/
+
+    /**
+     * @notice Attack and solve the level
+     * @param target Address of target contract
+     */
     function attack(IPuzzleWallet target) external payable {
         require(msg.value == address(target).balance, "PuzzleWallet: Value must be eq");
 
@@ -42,6 +57,10 @@ contract PuzzleWalletAttack {
 
         require(msg.sender == address(uint160(target.maxBalance())), "PuzzleWallet: Attack failed");
     }
+
+    /*//////////////////////////////////////////////////////////////
+                            Helpers & Others
+    //////////////////////////////////////////////////////////////*/
 
     // solhint-disable-next-line no-empty-blocks
     receive() external payable {}

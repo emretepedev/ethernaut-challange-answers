@@ -4,7 +4,22 @@ pragma solidity ^0.8.0;
 
 import "./interfaces/IAlienCodex.sol";
 
+/**
+ * @title Alien Codex Attack (Ethernaut Challenge Level 19 - Alien Codex)
+ * @author Emre Tepe (@emretepedev)
+ * @notice Attack contract for level 19
+ * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xda5b3Fb76C78b6EdEE6BE8F11a1c31EcfB02b272
+ * @custom:security-contact emretepedev@gmail.com
+ */
 contract AlienCodexAttack {
+    /*//////////////////////////////////////////////////////////////
+                                Attack
+    //////////////////////////////////////////////////////////////*/
+
+    /**
+     * @notice Attack and solve the level
+     * @param target Address of target contract
+     */
     function attack(IAlienCodex target) external {
         target.make_contact();
 

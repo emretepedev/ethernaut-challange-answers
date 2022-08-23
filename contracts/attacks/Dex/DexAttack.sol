@@ -5,11 +5,26 @@ pragma solidity ^0.8.0;
 import "./interfaces/IDex.sol";
 import "./interfaces/ISwappableToken.sol";
 
+/**
+ * @title Dex Attack (Ethernaut Challenge Level 22 - Dex)
+ * @author Emre Tepe (@emretepedev)
+ * @notice Attack contract for level 22
+ * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xC084FC117324D7C628dBC41F17CAcAaF4765f49e
+ * @custom:security-contact emretepedev@gmail.com
+ */
 contract DexAttack {
     uint256 private constant FROM = 0;
     uint256 private constant TO = 1;
     uint256 private constant MAX_UINT256 = type(uint256).max;
 
+    /*//////////////////////////////////////////////////////////////
+                                Attack
+    //////////////////////////////////////////////////////////////*/
+
+    /**
+     * @notice Attack and solve the level
+     * @param target Address of target contract
+     */
     function attack(IDex target) external {
         ISwappableToken[2] memory tokens = [ISwappableToken(target.token1()), ISwappableToken(target.token2())];
 

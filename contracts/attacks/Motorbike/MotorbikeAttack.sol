@@ -4,12 +4,25 @@ pragma solidity ^0.8.0;
 
 import "./interfaces/IMotorbike.sol";
 
+/**
+ * @title Motorbike Attack (Ethernaut Challenge Level 25 - Motorbike)
+ * @author Emre Tepe (@emretepedev)
+ * @notice Attack contract for level 25
+ * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x58Ab506795EC0D3bFAE4448122afa4cDE51cfdd2
+ * @custom:security-contact emretepedev@gmail.com
+ */
 contract MotorbikeAttack {
     bool private _levelPassed;
 
+    /*//////////////////////////////////////////////////////////////
+                                Attack
+    //////////////////////////////////////////////////////////////*/
+
     /**
-     * @dev To find address from storage, you can run this script in client side:
+     * @notice Attack and solve the level
+     * @dev To find address from storage, you can run this script in browser:
      * > '0x' + (await web3.eth.getStorageAt(contract.address, <IMPLEMENTATION_SLOT>)).slice(-40)
+     * @param implementation Address of implementation contract
      */
     function attack(address implementation) external {
         // solhint-disable-next-line avoid-low-level-calls
@@ -35,6 +48,10 @@ contract MotorbikeAttack {
 
         require(_levelPassed = _isSuccess_, "Motorbike: Call error");
     }
+
+    /*//////////////////////////////////////////////////////////////
+                            Helpers & Others
+    //////////////////////////////////////////////////////////////*/
 
     function levelPassed() external {
         require(_levelPassed, "Motorbike: Level not passed yet");
