@@ -45,7 +45,7 @@ contract DoubleEntryPointDefend is IDetectionBot {
             )
         });
     * @param user Address of the user
-    * @param msgData Calldata of the transaction
+    * @param msgData Data of the call
     */
     function handleTransaction(address user, bytes calldata msgData) external override {
         IForta forta = target.forta();

@@ -12,6 +12,10 @@ import "./interfaces/IGatekeeperTwo.sol";
  * @custom:security-contact emretepedev@gmail.com
  */
 contract GatekeeperTwoAttack {
+    /*//////////////////////////////////////////////////////////////
+                                Attack
+    //////////////////////////////////////////////////////////////*/
+
     /**
      * @param target Address of target contract
      */
