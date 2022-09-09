@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IRecovery.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IRecovery.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 17
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x0EB8e4771ABA41B70d0cb6770e04086E5aee5aB2
- * @custom:security-contact emretepedev@gmail.com
  */
 contract RecoveryAttack {
     /*//////////////////////////////////////////////////////////////

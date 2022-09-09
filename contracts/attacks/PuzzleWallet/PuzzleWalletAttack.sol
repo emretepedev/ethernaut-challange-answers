@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IPuzzleWallet.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IPuzzleWallet.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 24
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xe13a4a46C346154C41360AAe7f070943F67743c9
- * @custom:security-contact emretepedev@gmail.com
  */
 contract PuzzleWalletAttack {
     /*//////////////////////////////////////////////////////////////

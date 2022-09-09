@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IKing.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IKing.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 9
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x43BA674B4fbb8B157b7441C2187bCdD2cdF84FD5
- * @custom:security-contact emretepedev@gmail.com
  */
 contract KingAttack {
     /*//////////////////////////////////////////////////////////////

@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IPreservation.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IPreservation.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 16
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x97E982a15FbB1C28F6B8ee971BEc15C78b3d263F
- * @custom:security-contact emretepedev@gmail.com
  */
 contract PreservationAttack {
     address private slot0;

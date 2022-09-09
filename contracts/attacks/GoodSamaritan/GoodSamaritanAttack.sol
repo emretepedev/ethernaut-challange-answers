@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IGoodSamaritan.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IGoodSamaritan.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 27
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x000Fa85A0a533C3221ecf8Ab4D598b34B48B22Fd
- * @custom:security-contact emretepedev@gmail.com
  */
 contract GoodSamaritanAttack {
     uint256 private _amount;

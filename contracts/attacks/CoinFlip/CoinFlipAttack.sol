@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/ICoinFlip.sol";
@@ -10,7 +9,6 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 3
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x4dF32584890A0026e56f7535d0f2C6486753624f
- * @custom:security-contact emretepedev@gmail.com
  */
 contract CoinFlipAttack {
     using SafeMath for uint256;

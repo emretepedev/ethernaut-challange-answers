@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IToken.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IToken.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 5
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x63bE8347A617476CA461649897238A31835a32CE
- * @custom:security-contact emretepedev@gmail.com
  */
 contract TokenAttack {
     /*//////////////////////////////////////////////////////////////

@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IElevator.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IElevator.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 11
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xaB4F3F2644060b2D960b0d88F0a42d1D27484687
- * @custom:security-contact emretepedev@gmail.com
  */
 contract ElevatorAttack {
     bool private _isLastFloor = true;

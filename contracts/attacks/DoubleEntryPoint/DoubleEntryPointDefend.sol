@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IDoubleEntryPoint.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IDoubleEntryPoint.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 26
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x128BA32Ec698610f2fF8f010A7b74f9985a6D17c
- * @custom:security-contact emretepedev@gmail.com
  */
 contract DoubleEntryPointDefend is IDetectionBot {
     IDoubleEntryPoint private immutable target;

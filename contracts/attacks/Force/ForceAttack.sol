@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IForce.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IForce.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 7
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x22699e6AdD7159C3C385bf4d7e1C647ddB3a99ea
- * @custom:security-contact emretepedev@gmail.com
  */
 contract ForceAttack {
     /*//////////////////////////////////////////////////////////////

@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IAlienCodex.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IAlienCodex.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 19
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xda5b3Fb76C78b6EdEE6BE8F11a1c31EcfB02b272
- * @custom:security-contact emretepedev@gmail.com
  */
 contract AlienCodexAttack {
     /*//////////////////////////////////////////////////////////////

@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/INaughtCoin.sol";
@@ -9,7 +8,6 @@ import "./interfaces/INaughtCoin.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 15
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x096bb5e93a204BfD701502EB6EF266a950217218
- * @custom:security-contact emretepedev@gmail.com
  */
 contract NaughtCoinAttack {
     /*//////////////////////////////////////////////////////////////

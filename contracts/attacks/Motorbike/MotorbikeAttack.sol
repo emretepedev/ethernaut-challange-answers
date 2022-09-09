@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IMotorbike.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IMotorbike.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 25
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x58Ab506795EC0D3bFAE4448122afa4cDE51cfdd2
- * @custom:security-contact emretepedev@gmail.com
  */
 contract MotorbikeAttack {
     bool private _levelPassed;

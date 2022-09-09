@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IDex.sol";
@@ -10,7 +9,6 @@ import "./interfaces/ISwappableToken.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 22
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xC084FC117324D7C628dBC41F17CAcAaF4765f49e
- * @custom:security-contact emretepedev@gmail.com
  */
 contract DexAttack {
     uint256 private constant FROM = 0;

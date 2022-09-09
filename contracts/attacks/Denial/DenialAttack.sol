@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IDenial.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IDenial.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 20
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0xf1D573178225513eDAA795bE9206f7E311EeDEc3
- * @custom:security-contact emretepedev@gmail.com
  */
 contract DenialAttack {
     /*//////////////////////////////////////////////////////////////

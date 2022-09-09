@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/ITelephone.sol";
@@ -9,7 +8,6 @@ import "./interfaces/ITelephone.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 4
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x0b6F6CE4BCfB70525A31454292017F640C10c768
- * @custom:security-contact emretepedev@gmail.com
  */
 contract TelephoneAttack {
     /*//////////////////////////////////////////////////////////////

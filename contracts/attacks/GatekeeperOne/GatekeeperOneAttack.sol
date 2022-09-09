@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IGatekeeperOne.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IGatekeeperOne.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 13
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x9b261b23cE149422DE75907C6ac0C30cEc4e652A
- * @custom:security-contact emretepedev@gmail.com
  */
 contract GatekeeperOneAttack {
     /*//////////////////////////////////////////////////////////////

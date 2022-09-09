@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IPrivacy.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IPrivacy.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 12
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x11343d543778213221516D004ED82C45C3c8788B
- * @custom:security-contact emretepedev@gmail.com
  */
 contract PrivacyAttack {
     /*//////////////////////////////////////////////////////////////

@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IDexTwo.sol";
@@ -11,7 +10,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 23
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x5026Ff8C97303951c255D3a7FDCd5a1d0EF4a81a
- * @custom:security-contact emretepedev@gmail.com
  */
 contract DexTwoAttack is ERC20 {
     IDexTwo private immutable target;

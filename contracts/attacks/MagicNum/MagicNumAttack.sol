@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IMagicNum.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IMagicNum.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 18
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x200d3d9Ac7bFd556057224e7aEB4161fED5608D0
- * @custom:security-contact emretepedev@gmail.com
  */
 contract MagicNumAttack {
     /*//////////////////////////////////////////////////////////////

@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "./interfaces/IShop.sol";
@@ -9,7 +8,6 @@ import "./interfaces/IShop.sol";
  * @author Emre Tepe (@emretepedev)
  * @notice Attack contract for level 21
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x3aCd4766f1769940cA010a907b3C8dEbCe0bd4aB
- * @custom:security-contact emretepedev@gmail.com
  */
 contract ShopAttack {
     IShop private immutable target;
