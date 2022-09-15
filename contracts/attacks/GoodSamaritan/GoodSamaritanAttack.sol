@@ -10,6 +10,8 @@ import "./interfaces/IGoodSamaritan.sol";
  * @custom:ethernaut https://ethernaut.openzeppelin.com/level/0x000Fa85A0a533C3221ecf8Ab4D598b34B48B22Fd
  */
 contract GoodSamaritanAttack {
+    error NotEnoughBalance();
+
     uint256 private _amount;
 
     /*//////////////////////////////////////////////////////////////
@@ -36,13 +38,6 @@ contract GoodSamaritanAttack {
     function notify(uint256 amount) external {
         _amount = amount;
 
-        if (10 == amount) {
-            bytes memory reason = abi.encodeWithSignature("NotEnoughBalance()");
-            uint256 len = reason.length;
-            // solhint-disable-next-line no-inline-assembly
-            assembly {
-                revert(add(32, reason), len)
-            }
-        }
+        if (10 == amount) revert NotEnoughBalance();
     }
 }
